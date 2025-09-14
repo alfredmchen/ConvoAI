@@ -28,29 +28,31 @@ struct AgentCard: View {
     let agent: Agent
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(agent.name)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
-            
-            Text(agent.persona)
-                .font(.subheadline)
-                .fontWeight(.medium)
-                .foregroundColor(.blue)
-            
-            Text(agent.description)
-                .font(.body)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.leading)
+        NavigationLink(destination: ConversationView()){
+            VStack(alignment: .leading, spacing: 8) {
+                Text(agent.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                
+                Text(agent.persona)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.blue)
+                
+                Text(agent.description)
+                    .font(.body)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.leading)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.systemBackground))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color(.systemGray4), lineWidth: 1)
+            )
+            .cornerRadius(12)
         }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color(.systemBackground))
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color(.systemGray4), lineWidth: 1)
-        )
-        .cornerRadius(12)
     }
 }
